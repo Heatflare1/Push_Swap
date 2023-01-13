@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:40:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/13 15:38:18 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/13 17:57:35 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ int	main(int argc, char *argv[])
 	if (!stack->b.b_stack)
 		error_exit(2, stack);
 	int_assembly(stack, argv);
+	test(stack);
 }

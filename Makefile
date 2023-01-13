@@ -17,7 +17,10 @@ RM		:=	rm -rf
 
 SRC 	:=	main.c			\
 			stack_valid.c	\
-			push.c			
+			push.c			\
+			swap.c			\
+			rotate.c		\
+			sort.c
 
 OBJ		:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 SRC		:=	$(addprefix $(SRC_DIR)/,$(SRC))

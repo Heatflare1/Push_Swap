@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:32:40 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/13 16:59:02 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:18:07 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int	pivot_finder(t_stack *stack, int start, int end)
 		error_exit(3, stack);
 	ft_memcpy(stack->sorted, stack->a.a_stack + start, (end - start) * sizeof(int));
 	sorting(stack, 0, end - start);
-	for (pivot = 0; pivot < end; pivot++)
-		printf("sort{%d}\n", stack->sorted[pivot]);
 	pivot = stack->sorted[(end - start)];
 	free(stack->sorted);
 	return (pivot);
@@ -72,7 +70,9 @@ void	int_assembly(t_stack *stack, char *argv[])
 {
 	long	numb;
 	int		i;
-
+	int		index;
+	
+	index = 0;
 	i = stack->total - 1;
 	while (i >= 0)
 	{
@@ -80,9 +80,11 @@ void	int_assembly(t_stack *stack, char *argv[])
 		numb = ft_latoi(argv[i]);
 		if (!(numb <= INT_MAX && numb >= INT_MIN) || ft_strlen(argv[i]) == 0)
 			error_exit(3, stack);
-		stack->a.a_stack[i] = (int)numb;
+		stack->a.a_stack[index] = (int)numb;
 		i--;
+		index++;
 	}
-	stack->a.a_top = stack->total;
+	stack->a.a_top = stack->total - 1;
+	stack->b.b_top--;
 	pivot_finder(stack, 0, stack->total);
 }
