@@ -3,42 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:51:18 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/13 18:42:10 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:17:57 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	test(t_stack *stack)
+void	quicksort_a(t_stacks *stack, int push)
 {
-	int i;
+	int pivot;
+	int old_push;
 	
-	pb(stack);
-	pb(stack);
-	pb(stack);
-	pb(stack);
-	pb(stack);
-	pb(stack);
-	for (i=0; i < stack->total; i++)
-	{
-		if (i <= stack->a.a_top)
-			printf("a-old[%d] | ", stack->a.a_stack[i]);
-		if (i <= stack->b.b_top)
-			printf("b-old[%d]\n", stack->b.b_stack[i]);
-		else 
-			printf("\n");
-	}
-	rb(stack);
-	sb(stack);
-	write(1, "\n", 1);
-	for (i=0; i <= stack->total; i++)
-	{
-		if (i <= stack->a.a_top)
-			printf("a-new[%d]\n", stack->a.a_stack[i]);
-		if (i <= stack->b.b_top)
-			printf("b-new[%d]\n", stack->b.b_stack[i]);
-	}
+	old_push = push;
+	if (swapa_or_not(stack) == 1)
+		return ;
+	if (is_sorted(stack->a, push) == 1)
+		return ;
+	pivot = pivot_finder(stack, stack->a, push);
+	push = pivot_bpush(stack, push, pivot);
+	quicksort_a(stack, old_push - push);
+	quicksort_b(stack, push);
+}
+
+void	quicksort_b(t_stacks *stack, int push)
+{
+	int pivot;
+	int old_push;
+	
+	old_push = push;
+	if (swapb_or_not(stack) == 1)
+		return(push_to_a(stack, push));
+	if (is_sortedb(stack->b, push) == 1)
+		return (push_to_a(stack, push));
+	pivot = pivot_finder(stack, stack->b, push);	
+	push = pivot_apush(stack, push, pivot);
+	quicksort_a(stack, push);
+	quicksort_b(stack, old_push - push);
 }

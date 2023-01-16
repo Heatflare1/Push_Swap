@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:32:40 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/13 18:18:07 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:19:55 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	valid_digit(char *digit, t_stack *stack)
+void	valid_digit(char *digit, t_stacks *stack)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	valid_digit(char *digit, t_stack *stack)
 		i++;
 	}
 }
-void	sorting(t_stack *stack, int index, int end)
+void	sorting(t_stacks *stack, int index, int end)
 {
 	int temp;
 	int flag;
@@ -52,21 +52,21 @@ void	sorting(t_stack *stack, int index, int end)
 	}
 }
 
-int	pivot_finder(t_stack *stack, int start, int end)
+int	pivot_finder(t_stacks *main, t_stack *stack, int end)
 {
 	int pivot;
 
-	stack->sorted = malloc((end - start) * sizeof(int));
-	if (!stack->sorted)
-		error_exit(3, stack);
-	ft_memcpy(stack->sorted, stack->a.a_stack + start, (end - start) * sizeof(int));
-	sorting(stack, 0, end - start);
-	pivot = stack->sorted[(end - start)];
-	free(stack->sorted);
+	main->sorted = malloc(end * sizeof(int));
+	if (!main->sorted)
+		error_exit(3, main);
+	ft_memcpy(main->sorted, stack->stack + ((stack->top + 1) - end), end * sizeof(int));
+	sorting(main, 0, end);
+	pivot = main->sorted[end / 2];
+	free(main->sorted);
 	return (pivot);
 }
 
-void	int_assembly(t_stack *stack, char *argv[])
+void	int_assembly(t_stacks *stack, char *argv[])
 {
 	long	numb;
 	int		i;
@@ -80,11 +80,10 @@ void	int_assembly(t_stack *stack, char *argv[])
 		numb = ft_latoi(argv[i]);
 		if (!(numb <= INT_MAX && numb >= INT_MIN) || ft_strlen(argv[i]) == 0)
 			error_exit(3, stack);
-		stack->a.a_stack[index] = (int)numb;
+		stack->a->stack[index] = (int)numb;
 		i--;
 		index++;
 	}
-	stack->a.a_top = stack->total - 1;
-	stack->b.b_top--;
-	pivot_finder(stack, 0, stack->total);
+	stack->a->top = stack->total - 1;
+	stack->b->top--;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:25 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/13 17:57:44 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/16 15:33:05 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,45 @@
 # include <limits.h>
 # include <stdio.h>
 
-typedef struct s_stack_a
-{
-	int	*a_stack;
-	int a_top;
-}	t_stack_a;
-
-typedef struct s_stack_b
-{
-	int	*b_stack;
-	int b_top;
-}	t_stack_b;
-
 typedef struct s_stack
 {
-	t_stack_a a;
-	t_stack_b b;
-	int total;
-	int *sorted;
+	int	*stack;
+	int top;
 }	t_stack;
 
-void	int_assembly(t_stack *stack, char *argv[]);
-void	test(t_stack *stack);
+typedef struct s_stacks
+{
+	t_stack *a;
+	t_stack *b;
+	int total;
+	int *sorted;
+}	t_stacks;
 
-void	error_exit(int error_code, t_stack *stack);
+void	int_assembly(t_stacks *stack, char *argv[]);
+int		pivot_finder(t_stacks *main, t_stack *stack, int end);
+void	test(t_stacks *stack);
 
-void	ra(t_stack *stack);
-void	rra(t_stack *stack);
-void	rb(t_stack *stack);
-void	rrb(t_stack *stack);
+int		is_sorted(t_stack *stack, int end);
+int		is_sortedb(t_stack *stack, int end);
+int		swapa_or_not(t_stacks *stack);
+int		swapb_or_not(t_stacks *stack);
+void	error_exit(int error_code, t_stacks *stack);
 
-void	pa(t_stack *stack);
-void	pb(t_stack *stack);
+void	quicksort_a(t_stacks *stack, int push);
+void	quicksort_b(t_stacks *stack, int push);
 
-void	sa(t_stack *stack);
-void	sb(t_stack *stack);
+void	ra(t_stacks *stack);
+void	rra(t_stacks *stack);
+void	rb(t_stacks *stack);
+void	rrb(t_stacks *stack);
+
+void	pa(t_stacks *stack);
+void	pb(t_stacks *stack);
+int		pivot_bpush(t_stacks *stack, int push, int pivot);
+int		pivot_apush(t_stacks *stack, int push, int pivot);
+void	push_to_a(t_stacks *stack, int push);
+
+void	sa(t_stacks *stack);
+void	sb(t_stacks *stack);
 
 #endif
