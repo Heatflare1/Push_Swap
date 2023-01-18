@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:32:40 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/17 12:05:45 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/18 19:05:16 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ void	int_assembly(t_stacks *stack, char *argv[])
 		numb = ft_latoi(argv[i]);
 		if (!(numb <= INT_MAX && numb >= INT_MIN) || ft_strlen(argv[i]) == 0)
 			error_exit(3, stack);
-		stack->a->stack[index] = (int)numb;
+		stack->a.stack[index] = (int)numb;
 		i--;
 		index++;
 	}
-	stack->a->top = stack->total - 1;
-	stack->b->top--;
+	stack->a.top = stack->total - 1;
+	stack->b.top = -1;
 }

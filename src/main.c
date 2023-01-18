@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:40:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/18 15:41:23 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/18 20:59:22 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,11 @@ void	error_exit(int error_code, t_stacks *stack)
 	if (error_code > 4)
 		free(stack->sorted);
 	if (error_code > 2)
-		free(stack->b->stack);
+		free(stack->b.stack);
 	if (error_code > 1)
-		free(stack->a->stack);
+		free(stack->a.stack);
 	if (error_code > 0)
 		free(stack);
-	ft_printf("error_code = %d ", error_code);
 	write(STDERR_FILENO, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
@@ -57,30 +56,19 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 		return (EXIT_SUCCESS);
-	stack = ft_calloc(1, sizeof(t_stack));
+	stack = ft_calloc(1, sizeof(t_stacks));
 	if (!stack)
 		error_exit(0, stack);
 	argv = argument_converter(argc, argv, stack);
-	stack->a = ft_calloc(1, sizeof(t_stack));
-	stack->b = ft_calloc(1, sizeof(t_stack));
-	stack->a->stack = malloc(stack->total * sizeof(int));
-	if (!stack->a->stack)
+	stack->a.stack = malloc(stack->total * sizeof(int));
+	if (!stack->a.stack)
 		error_exit(1, stack);
-	stack->b->stack = malloc(stack->total * sizeof(int));
-	if (!stack->b->stack)
+	stack->b.stack = malloc(stack->total * sizeof(int));
+	if (!stack->b.stack)
 		error_exit(2, stack);
 	int_assembly(stack, argv);
 	stack->push = stack->total;
-	for (i=stack->total; i >= 0; i--)
-	{
-		if (i <= stack->a->top)
-			printf("a-old[%d]\n", stack->a->stack[i]);
-	}
 	quicksort_a(stack, stack->total);
 	for (i=stack->total; i >= 0; i--)
-	{
-		if (i <= stack->a->top)
-			printf("a-new[%d]\n", stack->a->stack[i]);
-	}
 	return (EXIT_SUCCESS);
 }

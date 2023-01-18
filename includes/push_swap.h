@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:25 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/18 15:13:48 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/18 20:40:24 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_stack
 
 typedef struct s_stacks
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack a;
+	t_stack b;
 	int total;
 	int *sorted;
 	int push;
@@ -37,6 +37,8 @@ void	int_assembly(t_stacks *stack, char *argv[]);
 int		pivot_finder(t_stacks *main, t_stack *stack, int end);
 void	test(t_stacks *stack);
 
+void	backa(t_stacks *stack, int push);
+void	backb(t_stacks *stack, int push);
 int		is_sorted(t_stack *stack, int end);
 int		is_sortedb(t_stack *stack, int end);
 int		swapa_or_not(t_stacks *stack, int push);
