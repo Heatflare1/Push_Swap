@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:32:40 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/16 17:19:55 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/17 12:05:45 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	valid_digit(char *digit, t_stacks *stack)
 	int	i;
 
 	i = 0;
-	if (digit[0] == '-')
+	if (digit[0] == '-') // only - breaks code..
 		i++;
 	while (digit[i])
 	{

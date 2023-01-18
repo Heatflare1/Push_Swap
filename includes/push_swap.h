@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:25 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/16 15:33:05 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/18 15:13:48 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_stacks
 	t_stack *b;
 	int total;
 	int *sorted;
+	int push;
 }	t_stacks;
 
 void	int_assembly(t_stacks *stack, char *argv[]);
@@ -38,8 +39,8 @@ void	test(t_stacks *stack);
 
 int		is_sorted(t_stack *stack, int end);
 int		is_sortedb(t_stack *stack, int end);
-int		swapa_or_not(t_stacks *stack);
-int		swapb_or_not(t_stacks *stack);
+int		swapa_or_not(t_stacks *stack, int push);
+int		swapb_or_not(t_stacks *stack, int push);
 void	error_exit(int error_code, t_stacks *stack);
 
 void	quicksort_a(t_stacks *stack, int push);

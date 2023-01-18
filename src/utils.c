@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:49:47 by jisse             #+#    #+#             */
-/*   Updated: 2023/01/16 17:25:04 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/18 15:36:06 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	is_sorted(t_stack *stack, int end)
 {
 	int	i;
-	
-	end = stack->top - end;
-	i = stack->top;
-	while (i > end)
+	if (end <= 1)
+		return (1);
+	i = 0;
+	while (i < end)
 	{
-		if (stack->stack[i] < stack->stack[i - 1])
+		if (stack->stack[stack->top - i] < stack->stack[stack->top - i + 1])
 			return (0);
-		i--;
+		i++;
 	}
 	return (1);
 }
@@ -30,33 +30,33 @@ int	is_sorted(t_stack *stack, int end)
 int	is_sortedb(t_stack *stack, int end)
 {
 	int i;
-	
-	end = stack->top - end;
-	i = stack->top;
-	while (i > end)
+	if (end == 1)
+		return (1);
+	i = 0;
+	while (i < end)
 	{
-		if (stack->stack[i] < stack->stack[i - 1])
+		if (stack->stack[stack->top - i] > stack->stack[stack->top - i + 1])
 			return (0);
-		i--;
+		i++;
 	}
 	return (1);
 }
 
-int	swapa_or_not(t_stacks *stack)
+int	swapa_or_not(t_stacks *stack, int push)
 {
-	if (stack->a->top == 1 && stack->a->stack[stack->a->top] > stack->a->stack[stack->a->top - 1])
+	if (push == 2)
 	{
-		sa(stack);
-		return (1);
+		if (stack->a->stack[stack->a->top] > stack->a->stack[stack->a->top - 1])
+			sa(stack);
 	}
 	return (0);
 }
-int	swapb_or_not(t_stacks *stack)
+int	swapb_or_not(t_stacks *stack, int push)
 {
-	if (stack->b->top == 1 && stack->b->stack[stack->b->top] < stack->b->stack[stack->b->top - 1])
+	if (push == 2)
 	{
-		sb(stack);
-		return (1);
+		if (stack->b->stack[stack->b->top] < stack->b->stack[stack->b->top - 1])
+			sb(stack);
 	}
 	return (0);
 }

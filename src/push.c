@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:40:02 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/16 17:29:18 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/18 14:49:22 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,10 @@ int	pivot_bpush(t_stacks *stack, int push, int pivot)
 
 	i = 0;
 	amount_p = 0;
-	ft_printf("push!%d\n", push);
 	while (i < push)
 	{
 		if (stack->a->stack[stack->a->top] < pivot)
 		{
-			ft_printf("top%d\n", stack->a->stack[stack->a->top]);
 			pb(stack);
 			amount_p++;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:40:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/16 17:17:23 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/18 15:41:23 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ char	**argument_converter(int argc, char *argv[], t_stacks *stack)
 	}
 	else
 	{
-		while (argv[i])
-			i++;	
+		while (argv[i] != '\0')
+			i++;
 		stack->total = i;
 	}
 	return (argv);
@@ -70,11 +70,17 @@ int	main(int argc, char *argv[])
 	if (!stack->b->stack)
 		error_exit(2, stack);
 	int_assembly(stack, argv);
-	quicksort_a(stack, stack->total);
-	for (i=0; i <= stack->total; i++)
+	stack->push = stack->total;
+	for (i=stack->total; i >= 0; i--)
 	{
 		if (i <= stack->a->top)
-			printf("[%d]\n", stack->a->stack[i]);
+			printf("a-old[%d]\n", stack->a->stack[i]);
+	}
+	quicksort_a(stack, stack->total);
+	for (i=stack->total; i >= 0; i--)
+	{
+		if (i <= stack->a->top)
+			printf("a-new[%d]\n", stack->a->stack[i]);
 	}
 	return (EXIT_SUCCESS);
 }
