@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:40:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/18 20:59:22 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:20:49 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**argument_converter(int argc, char *argv[], t_stacks *stack)
 	if (argc != 2)
 	{
 		argv++;
-		stack->total = (argc - 1);	
+		stack->total = (argc - 1);
 	}
 	else
 	{
@@ -51,7 +51,6 @@ void	error_exit(int error_code, t_stacks *stack)
 
 int	main(int argc, char *argv[])
 {
-	int i;
 	t_stacks	*stack;
 
 	if (argc < 2)
@@ -67,8 +66,6 @@ int	main(int argc, char *argv[])
 	if (!stack->b.stack)
 		error_exit(2, stack);
 	int_assembly(stack, argv);
-	stack->push = stack->total;
 	quicksort_a(stack, stack->total);
-	for (i=stack->total; i >= 0; i--)
 	return (EXIT_SUCCESS);
 }

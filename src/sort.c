@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:51:18 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/20 11:34:41 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:12:49 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	quicksort_a(t_stacks *stack, int push)
 {
-	int pivot;
-	int old_push;
-	
+	int	pivot;
+	int	old_push;
+
 	old_push = push;
 	if (swap_sort_a(stack, push) == 1)
 		return ;
@@ -28,9 +28,9 @@ void	quicksort_a(t_stacks *stack, int push)
 
 void	quicksort_b(t_stacks *stack, int push)
 {
-	int pivot;
-	int old_push;
-	
+	int	pivot;
+	int	old_push;
+
 	old_push = push;
 	if (swap_sort_b(stack, push) == 1)
 		return (push_to_a(stack, push));

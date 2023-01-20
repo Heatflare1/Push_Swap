@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:49:47 by jisse             #+#    #+#             */
-/*   Updated: 2023/01/20 11:49:02 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:17:01 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	is_sorted(t_stack *stack, int push)
 {
 	int	i;
+
 	if (push <= 1)
 		return (1);
 	i = 0;
@@ -29,7 +30,8 @@ int	is_sorted(t_stack *stack, int push)
 
 int	is_sortedb(t_stack *stack, int push)
 {
-	int i;
+	int	i;
+
 	if (push == 1)
 		return (1);
 	i = 0;
@@ -52,6 +54,7 @@ int	swapa_or_not(t_stacks *stack, int push)
 	}
 	return (0);
 }
+
 int	swapb_or_not(t_stacks *stack, int push)
 {
 	if (push <= 2)
@@ -73,5 +76,4 @@ void	push_to_a(t_stacks *stack, int push)
 		pa(stack);
 		i++;
 	}
-	
 }

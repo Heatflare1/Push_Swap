@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:40:02 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/20 11:51:45 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:11:51 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	pb(t_stacks *stack)
 
 int	pivot_bpush(t_stacks *stack, int push, int pivot)
 {
-	int i;
-	int amount_p;
+	int	i;
+	int	amount_p;
 
 	i = 0;
 	amount_p = 0;
@@ -63,8 +63,8 @@ int	pivot_bpush(t_stacks *stack, int push, int pivot)
 
 int	pivot_apush(t_stacks *stack, int push, int pivot)
 {
-	int i;
-	int amount_p;
+	int	i;
+	int	amount_p;
 
 	i = 0;
 	amount_p = 0;

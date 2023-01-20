@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:05:51 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/16 10:49:10 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/20 14:59:54 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ int			ft_isprint(int c);
 int			ft_lstsize(t_list *lst);
 int			ft_strlen(const char *s);
 int			ft_atoi(const char *str);
+int			ft_atoi_overflow(const char *str, int *numb);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			basetoa(const char *baseset, int base, unsigned long nb);
-long		ft_latoi(const char *nb);
+long		ft_atol(const char *nb);
 char		*ft_itoa(int n);
 char		*ft_strdup(const char *s1);
 char		*ft_strchr(const char *s, int c);

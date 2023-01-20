@@ -41,7 +41,8 @@ SRC 	:=	ft_atoi.c 		\
 			ft_putnbr_fd.c 	\
 			ft_split.c 		\
 			ft_atoh.c		\
-			ft_latoi.c		\
+			ft_atol.c		\
+			ft_atoi_overflow.c 				\
 			\
 			ft_printf/src/basetoa.c			\
 			ft_printf/src/ft_printf.c		\

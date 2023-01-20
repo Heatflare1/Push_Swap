@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:32:40 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/20 11:54:52 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:15:28 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	valid_digit(char *digit, t_stacks *stack)
 	int	i;
 
 	i = 0;
-	if (digit[0] == '-') // only - breaks code..
+	if (digit[0] == '-' && digit[1] != '\0')
 		i++;
 	while (digit[i])
 	{
@@ -26,41 +26,43 @@ void	valid_digit(char *digit, t_stacks *stack)
 		i++;
 	}
 }
-void	sorting(t_stacks *stack, int index, int end)
+
+void	sorting(t_stacks *stack, int end)
 {
-	int temp;
-	int flag;
-	
-	flag = 1;
-	while (index < end - 1)
+	int	temp;
+	int	index;
+	int	sorted;
+
+	sorted = false;
+	while (!sorted)
 	{
-		if (stack->sorted[index] >= stack->sorted[index + 1])
+		sorted = true;
+		index = 0;
+		while (index < end - 1)
 		{
-			if (stack->sorted[index] == stack->sorted[index + 1])
-				error_exit(4, stack);
-			temp = stack->sorted[index];
-			stack->sorted[index] = stack->sorted[index + 1];
-			stack->sorted[index + 1] = temp;
-			flag = 0;
-		}
-		index++;
-		if (flag == 0)
-		{
-			index = 0;
-			flag = 1;
+			if (stack->sorted[index] >= stack->sorted[index + 1])
+			{
+				if (stack->sorted[index] == stack->sorted[index + 1])
+					error_exit(4, stack);
+				temp = stack->sorted[index];
+				stack->sorted[index] = stack->sorted[index + 1];
+				stack->sorted[index + 1] = temp;
+				sorted = false;
+			}
+			index++;
 		}
 	}
 }
 
 int	pivot_finder(t_stacks *main, t_stack *stack, int end)
 {
-	int pivot;
+	int	pivot;
 
 	main->sorted = malloc(end * sizeof(int));
 	if (!main->sorted)
 		error_exit(3, main);
-	ft_memcpy(main->sorted, stack->stack + ((stack->top + 1) - end), end * sizeof(int));
-	sorting(main, 0, end);
+	ft_memcpy(main->sorted, stack->stack + ((stack->top + 1) - end), end * 4);
+	sorting(main, end);
 	pivot = main->sorted[end / 2];
 	free(main->sorted);
 	return (pivot);
@@ -68,19 +70,18 @@ int	pivot_finder(t_stacks *main, t_stack *stack, int end)
 
 void	int_assembly(t_stacks *stack, char *argv[])
 {
-	long	numb;
+	int		numb;
 	int		i;
 	int		index;
-	
+
 	index = 0;
 	i = stack->total - 1;
 	while (i >= 0)
 	{
 		valid_digit(argv[i], stack);
-		numb = ft_latoi(argv[i]);
-		if (!(numb <= INT_MAX && numb >= INT_MIN) || ft_strlen(argv[i]) == 0)
+		if (ft_atoi_overflow(argv[i], &numb) || ft_strlen(argv[i]) == 0)
 			error_exit(3, stack);
-		stack->a.stack[index] = (int)numb;
+		stack->a.stack[index] = numb;
 		i--;
 		index++;
 	}

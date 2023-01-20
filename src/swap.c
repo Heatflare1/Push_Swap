@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:09:36 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/18 19:02:49 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:16:05 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	sa(t_stacks *stack)
 {
-	int temp;
-	
+	int	temp;
+
 	if (stack->a.top < 1)
 		return ;
 	temp = stack->a.stack[stack->a.top];
@@ -26,12 +26,12 @@ void	sa(t_stacks *stack)
 
 void	sb(t_stacks *stack)
 {
-	int temp;
-	
+	int	temp;
+
 	if (stack->b.top < 1)
 		return ;
 	temp = stack->b.stack[stack->b.top];
 	stack->b.stack[stack->b.top] = stack->b.stack[stack->b.top - 1];
 	stack->b.stack[stack->b.top - 1] = temp;
-	write(1, "sb\n", 3);	
+	write(1, "sb\n", 3);
 }

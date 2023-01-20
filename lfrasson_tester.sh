@@ -6,7 +6,7 @@
 #    By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/04 16:53:09 by lfrasson          #+#    #+#              #
-#    Updated: 2023/01/18 21:05:22 by jmeruma          ###   ########.fr        #
+#    Updated: 2023/01/19 11:55:54 by jmeruma          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ if [ "$(eval uname)" == "Linux" ]
 then
 	CHECKER=./checker_linux
 else
-	CHECKER=./checker
+	CHECKER=./checker_Mac
 fi
 
 if ! command -v $CHECKER &> /dev/null
