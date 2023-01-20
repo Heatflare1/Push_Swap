@@ -21,7 +21,8 @@ SRC 	:=	main.c			\
 			swap.c			\
 			rotate.c		\
 			sort.c			\
-			utils.c
+			utils.c			\
+			sort_three.c	\
 
 OBJ		:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 SRC		:=	$(addprefix $(SRC_DIR)/,$(SRC))

@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:40:02 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/18 20:27:14 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 11:51:45 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,15 @@ int	pivot_bpush(t_stacks *stack, int push, int pivot)
 			amount_p++;
 		}
 		else
-			ra(stack);	
+			ra(stack);
+		i++;
+	}
+	i = 0;
+	if (stack->a.top < 3)
+		return (amount_p);
+	while (i < push - amount_p)
+	{
+		rra(stack);
 		i++;
 	}
 	return (amount_p);
@@ -69,6 +77,14 @@ int	pivot_apush(t_stacks *stack, int push, int pivot)
 		}
 		else
 			rb(stack);
+		i++;
+	}
+	i = 0;
+	if (stack->b.top < 3)
+		return (amount_p);
+	while (i < push - amount_p)
+	{
+		rrb(stack);
 		i++;
 	}
 	return (amount_p);

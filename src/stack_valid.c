@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:32:40 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/18 19:05:16 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 11:54:52 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void	int_assembly(t_stacks *stack, char *argv[])
 		index++;
 	}
 	stack->a.top = stack->total - 1;
+	pivot_finder(stack, &stack->a, stack->a.top);
 	stack->b.top = -1;
 }
