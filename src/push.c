@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:40:02 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/20 17:11:51 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:23:04 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	pivot_bpush(t_stacks *stack, int push, int pivot)
 	i = 0;
 	if (stack->a.top < 3)
 		return (amount_p);
-	while (i < push - amount_p)
+	while (i < push - amount_p && stack->sign == 1)
 	{
 		rra(stack);
 		i++;
@@ -82,7 +82,7 @@ int	pivot_apush(t_stacks *stack, int push, int pivot)
 	i = 0;
 	if (stack->b.top < 3)
 		return (amount_p);
-	while (i < push - amount_p)
+	while (i < push - amount_p && stack->sign == 1)
 	{
 		rrb(stack);
 		i++;

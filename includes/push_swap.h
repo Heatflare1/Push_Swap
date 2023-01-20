@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:25 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/20 17:20:33 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:20:16 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_stacks
 	t_stack b;
 	int total;
 	int *sorted;
+	int sign;
 }	t_stacks;
 
 void	int_assembly(t_stacks *stack, char *argv[]);
