@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:05:51 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/20 18:17:46 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/25 12:28:55 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	ft_atoi_overflow(const char *str, int *numb)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		*numb += str[i] - '0';
-		if (str[i + 1] >= '0' && str[i + 1] <= '9')
-			*numb *= 10;
 		if (*numb < 0 && (*numb != INT_MIN || sign == 1))
 			return (1);
+		if (str[i + 1] >= '0' && str[i + 1] <= '9')
+			*numb *= 10;
 		i++;
 	}
 	*numb *= sign;
