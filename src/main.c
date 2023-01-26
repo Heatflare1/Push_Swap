@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:40:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/20 17:20:49 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/26 13:05:16 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	main(int argc, char *argv[])
 	if (!stack->b.stack)
 		error_exit(2, stack);
 	int_assembly(stack, argv);
+	if (is_sorted(&stack->a, stack->total) == 1)
+		return (EXIT_SUCCESS);
 	quicksort_a(stack, stack->total);
 	return (EXIT_SUCCESS);
 }

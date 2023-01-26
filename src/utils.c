@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:49:47 by jisse             #+#    #+#             */
-/*   Updated: 2023/01/20 17:17:01 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/26 13:12:55 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	is_sorted(t_stack *stack, int push)
 
 	if (push <= 1)
 		return (1);
-	i = 0;
+	i = 1;
 	while (i < push)
 	{
 		if (stack->stack[stack->top - i] < stack->stack[stack->top - i + 1])
-			return (0);
+			return (0);	
 		i++;
 	}
 	return (1);
@@ -34,7 +34,7 @@ int	is_sortedb(t_stack *stack, int push)
 
 	if (push == 1)
 		return (1);
-	i = 0;
+	i = 1;
 	while (i < push)
 	{
 		if (stack->stack[stack->top - i] > stack->stack[stack->top - i + 1])
