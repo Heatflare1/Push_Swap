@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    lfrasson_tester.sh                                 :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+         #
+#    By: jisse <jisse@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/04 16:53:09 by lfrasson          #+#    #+#              #
-#    Updated: 2023/01/19 11:55:54 by jmeruma          ###   ########.fr        #
+#    Updated: 2023/01/26 16:06:07 by jisse            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,9 @@ fi
 
 if [ "$(eval uname)" == "Linux" ]
 then
-	CHECKER=./checker_linux
+	CHECKER=./checker
 else
-	CHECKER=./checker_Mac
+	CHECKER=./checker
 fi
 
 if ! command -v $CHECKER &> /dev/null
