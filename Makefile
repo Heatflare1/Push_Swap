@@ -7,7 +7,7 @@ LIBS		:=	./libft/libft.a
 MLX			?=	./MLX42
 
 HEADER		:=	-I libft -I includes
-HEADERS		:=	libft/libft.h
+HEADERS		:=	libft/libft.h 
 OBJ_DIR		:=	./obj
 SRC_DIR 	:=	./src
 
@@ -22,7 +22,7 @@ SRC 	:=	main.c			\
 			rotate.c		\
 			sort.c			\
 			utils.c			\
-			sort_three.c	\
+			sort_three.c
 
 OBJ		:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 SRC		:=	$(addprefix $(SRC_DIR)/,$(SRC))
@@ -65,6 +65,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	@mkdir $@
+
+mem: $(OBJ)
+	./leaks/memdetect.sh $^ $(LIBS) $(GCC_FLAGS) --args 9 3 7 20 0
 
 clean:
 	@echo $(Cyan) Sweeping.. 💥 $(Color_Off)
