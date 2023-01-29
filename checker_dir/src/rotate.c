@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:19:45 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/26 15:48:02 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:18:30 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,6 @@ void	rb(t_stacks *stack)
 	}
 }
 
-void	rr(t_stacks *stack)
-{
-	ra(stack);
-	rb(stack);
-}
-
 void	rrb(t_stacks *stack)
 {
 	int	i;
@@ -100,10 +94,4 @@ void	rrb(t_stacks *stack)
 			temp2 = stack->b.stack[i - 1];
 		i--;
 	}
-}
-
-void	rrr(t_stacks *stack)
-{
-	rra(stack);
-	rrb(stack);
 }

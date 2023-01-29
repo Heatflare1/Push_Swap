@@ -67,7 +67,7 @@ $(OBJ_DIR):
 	@mkdir $@
 
 mem: $(OBJ)
-	./leaks/memdetect.sh $^ $(LIBS) $(GCC_FLAGS) -g --args 9 3 7 0 2 -fail loop
+	./leaks/memdetect.sh $^ $(LIBS) $(GCC_FLAGS) --args "9 3 7 0 2 90 10 11 -20 -49 -890" 31
 
 clean:
 	@echo $(Cyan) Sweeping.. 💥 $(Color_Off)

@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:40:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/27 16:47:50 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:15:51 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ char	**argument_converter(int argc, char *argv[], t_stacks *stack)
 		stack->total = i;
 	}
 	return (argv);
+}
+
+void	clean_exit(t_stacks *stack)
+{
+	free(stack->a.stack);
+	free(stack->b.stack);
+	free(stack);
 }
 
 void	error_exit(int error_code, t_stacks *stack)
@@ -69,5 +76,6 @@ int	main(int argc, char *argv[])
 	if (is_sorted(&stack->a, stack->total) == 1)
 		return (EXIT_SUCCESS);
 	quicksort_a(stack, stack->total);
+	clean_exit(stack);
 	return (EXIT_SUCCESS);
 }

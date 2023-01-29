@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:25 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/26 15:59:09 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:22:03 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
 typedef struct s_stack
 {
 	int	*stack;
-	int top;
+	int	top;
 }	t_stack;
 
 typedef struct s_stacks
 {
-	t_stack a;
-	t_stack b;
-	int total;
-	int *sorted;
-	int sign;
+	t_stack	a;
+	t_stack	b;
+	int		total;
+	int		*sorted;
+	int		sign;
 }	t_stacks;
 
 void	int_assembly(t_stacks *stack, char *argv[]);
@@ -45,14 +45,11 @@ void	ra(t_stacks *stack);
 void	rra(t_stacks *stack);
 void	rb(t_stacks *stack);
 void	rrb(t_stacks *stack);
-void	rr(t_stacks *stack);
-void	rrr(t_stacks *stack);
 
 void	pa(t_stacks *stack);
 void	pb(t_stacks *stack);
 
 void	sa(t_stacks *stack);
 void	sb(t_stacks *stack);
-void	ss(t_stacks *stack);
 
 #endif

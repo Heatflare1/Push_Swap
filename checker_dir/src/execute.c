@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:27:23 by jisse             #+#    #+#             */
-/*   Updated: 2023/01/26 15:57:47 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:18:47 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <checker.h>
+
+void	ss(t_stacks *stack)
+{
+	sa(stack);
+	sb(stack);
+}
+
+void	rr(t_stacks *stack)
+{
+	ra(stack);
+	rb(stack);
+}
+
+void	rrr(t_stacks *stack)
+{
+	rra(stack);
+	rrb(stack);
+}
 
 void	execute(t_stacks *stack, char *operation)
 {
@@ -40,7 +58,7 @@ void	execute(t_stacks *stack, char *operation)
 
 void	reading(t_stacks *stack)
 {
-	char *operation;
+	char	*operation;
 
 	operation = get_next_line(STDIN_FILENO);
 	while (operation)

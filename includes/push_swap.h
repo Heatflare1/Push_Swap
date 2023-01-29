@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:25 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/26 16:30:14 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:22:42 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
 typedef struct s_stack
 {
 	int	*stack;
-	int top;
+	int	top;
 }	t_stack;
 
 typedef struct s_stacks
 {
-	t_stack a;
-	t_stack b;
-	int total;
-	int *sorted;
-	int sign;
+	t_stack	a;
+	t_stack	b;
+	int		total;
+	int		*sorted;
+	int		sign;
 }	t_stacks;
 
 void	int_assembly(t_stacks *stack, char *argv[]);

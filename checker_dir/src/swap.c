@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:09:36 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/26 15:48:18 by jisse            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:18:53 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,4 @@ void	sb(t_stacks *stack)
 	temp = stack->b.stack[stack->b.top];
 	stack->b.stack[stack->b.top] = stack->b.stack[stack->b.top - 1];
 	stack->b.stack[stack->b.top - 1] = temp;
-}
-
-void	ss(t_stacks *stack)
-{
-	sa(stack);
-	sb(stack);
 }
