@@ -12,7 +12,7 @@ OBJ_DIR		:=	./obj
 SRC_DIR 	:=	./src
 
 ### UTILS #####################################################
-CFLAGS	:=	-Wall -Wextra
+CFLAGS	:=	-Wall -Wextra -g
 RM		:=	rm -rf
 
 SRC 	:=	main.c			\
@@ -67,7 +67,7 @@ $(OBJ_DIR):
 	@mkdir $@
 
 mem: $(OBJ)
-	./leaks/memdetect.sh $^ $(LIBS) $(GCC_FLAGS) --args 9 3 7 20 0
+	./leaks/memdetect.sh $^ $(LIBS) $(GCC_FLAGS) -g --args 9 3 7 0 2 -fail loop
 
 clean:
 	@echo $(Cyan) Sweeping.. 💥 $(Color_Off)
