@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:33:25 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/29 15:22:42 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/02/01 11:03:40 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_stacks
 	int		sign;
 }	t_stacks;
 
-void	int_assembly(t_stacks *stack, char *argv[]);
+void	int_assembly(t_stacks *stack, char *argv[], int argc);
 int		pivot_finder(t_stacks *main, t_stack *stack, int end);
 
 int		is_sorted(t_stack *stack, int end);
@@ -43,7 +43,7 @@ int		swap_sort_a(t_stacks *stack, int push);
 int		swap_sort_b(t_stacks *stack, int push);
 int		swapa_or_not(t_stacks *stack, int push);
 int		swapb_or_not(t_stacks *stack, int push);
-void	error_exit(int error_code, t_stacks *stack);
+void	error_exit(char *argv[], int argc, int error_code, t_stacks *stack);
 
 void	quicksort_a(t_stacks *stack, int push);
 void	quicksort_b(t_stacks *stack, int push);

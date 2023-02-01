@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:32:40 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/26 15:20:11 by jisse            ###   ########.fr       */
+/*   Updated: 2023/02/01 11:12:19 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	valid_digit(char *digit, t_stacks *stack)
+int	valid_digit(char *digit)
 {
 	int	i;
 
@@ -22,12 +22,13 @@ void	valid_digit(char *digit, t_stacks *stack)
 	while (digit[i])
 	{
 		if (ft_isdigit(digit[i]) == 0)
-			error_exit(3, stack);
+			return (0);
 		i++;
 	}
+	return (1);
 }
 
-void	sorting(t_stacks *stack, int end)
+void	sorting(t_stacks *stack, int elements)
 {
 	int	temp;
 	int	index;
@@ -38,12 +39,12 @@ void	sorting(t_stacks *stack, int end)
 	{
 		sorted = true;
 		index = 0;
-		while (index < end - 1)
+		while (index <= elements - 1)
 		{
 			if (stack->sorted[index] >= stack->sorted[index + 1])
 			{
 				if (stack->sorted[index] == stack->sorted[index + 1])
-					error_exit(4, stack);
+					error_exit(NULL, 0, 4, stack);
 				temp = stack->sorted[index];
 				stack->sorted[index] = stack->sorted[index + 1];
 				stack->sorted[index + 1] = temp;
@@ -54,21 +55,22 @@ void	sorting(t_stacks *stack, int end)
 	}
 }
 
-int	pivot_finder(t_stacks *main, t_stack *stack, int end)
+int	pivot_finder(t_stacks *main, t_stack *stack, int elements)
 {
 	int	pivot;
 
-	main->sorted = malloc(end * sizeof(int));
+	main->sorted = malloc((elements + 1) * sizeof(int));
 	if (!main->sorted)
-		error_exit(3, main);
-	ft_memcpy(main->sorted, stack->stack + ((stack->top + 1) - end), end * 4);
-	sorting(main, end);
-	pivot = main->sorted[end / 2];
+		error_exit(NULL, 0, 3, main);
+	ft_memcpy(main->sorted, stack->stack + stack->top - elements, \
+	(elements + 1) * sizeof(int));
+	sorting(main, elements);
+	pivot = main->sorted[elements / 2];
 	free(main->sorted);
 	return (pivot);
 }
 
-void	int_assembly(t_stacks *stack, char *argv[])
+void	int_assembly(t_stacks *stack, char *argv[], int argc)
 {
 	int		numb;
 	int		i;
@@ -78,13 +80,17 @@ void	int_assembly(t_stacks *stack, char *argv[])
 	i = stack->total - 1;
 	while (i >= 0)
 	{
-		valid_digit(argv[i], stack);
-		if (ft_atoi_overflow(argv[i], &numb) || ft_strlen(argv[i]) == 0)
-			error_exit(3, stack);
+		if (!valid_digit(argv[i]) || ft_atoi_overflow(argv[i], &numb) \
+		|| ft_strlen(argv[i]) == 0)
+		{
+			error_exit(argv, argc, 3, stack);
+		}
 		stack->a.stack[index] = numb;
 		i--;
 		index++;
 	}
+	if (argc == 2)
+		ft_2dfree(argv);
 	stack->a.top = stack->total - 1;
 	pivot_finder(stack, &stack->a, stack->a.top);
 	stack->b.top = -1;

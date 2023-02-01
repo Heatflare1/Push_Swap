@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:51:18 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/01/20 19:40:20 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/01/30 02:54:14 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	quicksort_a(t_stacks *stack, int push)
 	old_push = push;
 	if (swap_sort_a(stack, push) == 1)
 		return ;
-	pivot = pivot_finder(stack, &stack->a, push);
+	pivot = pivot_finder(stack, &stack->a, push - 1);
 	push = pivot_bpush(stack, push, pivot);
 	quicksort_a(stack, old_push - push);
 	stack->sign = 1;
@@ -35,7 +35,7 @@ void	quicksort_b(t_stacks *stack, int push)
 	old_push = push;
 	if (swap_sort_b(stack, push) == 1)
 		return (push_to_a(stack, push));
-	pivot = pivot_finder(stack, &stack->b, push);
+	pivot = pivot_finder(stack, &stack->b, push - 1);
 	push = pivot_apush(stack, push, pivot);
 	quicksort_a(stack, push);
 	quicksort_b(stack, old_push - push);
