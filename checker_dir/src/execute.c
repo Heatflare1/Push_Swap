@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:27:23 by jisse             #+#    #+#             */
-/*   Updated: 2023/01/29 15:18:47 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:31:28 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	execute(t_stacks *stack, char *operation)
 		rrb(stack);
 	else if (ft_strncmp(operation, "rrr\n", 4) == 0 && ft_strlen(operation) == 4)
 		rrr(stack);
+	else
+		error_exit(NULL, 0, 3, stack);
 }
 
 void	reading(t_stacks *stack)

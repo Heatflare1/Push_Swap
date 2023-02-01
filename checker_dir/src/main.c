@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:40:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/02/01 11:17:08 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:38:09 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ int	main(int argc, char *argv[])
 	if (!stack.b.stack)
 		error_exit(argv, argc, 2, &stack);
 	int_assembly(&stack, argv, argc);
-	if (!is_sorted(&stack.a, stack.total))
-		reading(&stack);
+	reading(&stack);
 	clean_exit(&stack);
 	return (EXIT_SUCCESS);
 }
